@@ -13,7 +13,7 @@ void main() async {
   runApp(MyApp(user: user));
 }
 
-//
+// MAIN CLASS
 
 class MyApp extends StatelessWidget {
   final User? user;
