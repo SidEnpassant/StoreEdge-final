@@ -1,5 +1,3 @@
-// lib/widgets/others/used-in-register/custom_text_field_register.dart
-
 import 'package:flutter/material.dart';
 import 'package:storeedge/utils/constants.dart';
 

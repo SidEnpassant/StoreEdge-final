@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ThemeConstants {
   static const Color primaryColor = Color(0xFF5044FC);
-  static const Color backgroundColor = Color(0xFFEEEEEE);
+  static const Color backgroundColor = Color.fromARGB(255, 255, 255, 255);
   static const Color textColor = Color(0xFF000001);
   static const Color iconColor = Color(0xFF5044FC);
 

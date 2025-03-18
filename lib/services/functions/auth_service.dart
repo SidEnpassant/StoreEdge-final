@@ -5,7 +5,7 @@ import 'package:storeedge/services/models/login_response.dart';
 import 'package:storeedge/services/settings/api_settings.dart';
 
 class AuthService {
-  static const String _tokenKey = 'access_token';
+  static const String _tokenKey = 'accessToken';
   static const String _userKey = 'user_data';
 
   Future<LoginResponse> login(String email, String password) async {
