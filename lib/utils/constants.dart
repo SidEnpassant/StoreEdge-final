@@ -2,9 +2,21 @@ import 'package:flutter/material.dart';
 
 class ThemeConstants {
   static const Color primaryColor = Color(0xFF5044FC);
-  static const Color backgroundColor = Color.fromARGB(255, 255, 255, 255);
+  static const Color solidBackgroundColor = Color.fromARGB(255, 255, 255, 255);
   static const Color textColor = Color(0xFF000001);
   static const Color iconColor = Color(0xFF5044FC);
+
+  static const List<Color> backgroundGradientColors = [
+    Color.fromARGB(255, 255, 255, 255),
+    Color.fromARGB(255, 235, 235, 255),
+    Color.fromARGB(255, 218, 218, 255),
+  ];
+
+  static const LinearGradient backgroundGradient = LinearGradient(
+    begin: Alignment.bottomCenter,
+    end: Alignment.topCenter,
+    colors: backgroundGradientColors,
+  );
 
   static const TextStyle titleStyle = TextStyle(
     fontFamily: 'ravenna-serial-extrabold-regular',

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:storeedge/auth/login/login_screen.dart';
-import 'package:storeedge/utils/theme/app_colors.dart';
 import 'package:storeedge/widgets/others/used-in-home/footer.dart';
 import 'package:storeedge/widgets/others/used-in-profile-screen/profile_item.dart';
 import 'package:storeedge/widgets/others/used-in-profile-screen/user_profile.dart';
@@ -64,10 +63,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Future<void> logout() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('accessToken');
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const LoginScreen()),
-    );
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginScreen()),
+        (route) => false);
   }
 
   @override

@@ -382,100 +382,104 @@ class _RegisterScreenState extends State<RegisterScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ThemeConstants.backgroundColor,
-      body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        if (_currentPage > 0)
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: ThemeConstants.backgroundGradient,
+        ),
+        child: SafeArea(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          if (_currentPage > 0)
+                            GestureDetector(
+                              onTap: _previousPage,
+                              child: const Icon(Icons.arrow_back),
+                            ),
+                          if (_currentPage > 0) const SizedBox(width: 16),
                           GestureDetector(
-                            onTap: _previousPage,
-                            child: const Icon(Icons.arrow_back),
+                            onTap: () => Navigator.pop(context),
+                            child: const Icon(Icons.close),
                           ),
-                        if (_currentPage > 0) const SizedBox(width: 16),
-                        GestureDetector(
-                          onTap: () => Navigator.pop(context),
-                          child: const Icon(Icons.close),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 24),
-                    _buildProgressIndicator(),
-                  ],
+                        ],
+                      ),
+                      const SizedBox(height: 24),
+                      _buildProgressIndicator(),
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: PageView.builder(
-                  controller: _pageController,
-                  onPageChanged: (index) {
-                    setState(() => _currentPage = index);
-                    _animationController.reset();
-                    _animationController.forward();
-                  },
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: _registrationSteps.length,
-                  itemBuilder: (context, index) {
-                    final step = _registrationSteps[index];
-                    return FadeTransition(
-                      opacity: _fadeAnimation,
-                      child: SlideTransition(
-                        position: _slideAnimation,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(step['title'],
-                                  style: ThemeConstants.titleStyle),
-                              const SizedBox(height: 8),
-                              Text(step['subtitle'],
-                                  style: ThemeConstants.subtitleStyle),
-                              const SizedBox(height: 40),
-                              _buildStepContent(step),
-                              const Spacer(),
-                              SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                  onPressed: _isLoading ? null : _nextPage,
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor:
-                                        ThemeConstants.primaryColor,
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 16),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          ThemeConstants.borderRadius),
+                Expanded(
+                  child: PageView.builder(
+                    controller: _pageController,
+                    onPageChanged: (index) {
+                      setState(() => _currentPage = index);
+                      _animationController.reset();
+                      _animationController.forward();
+                    },
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: _registrationSteps.length,
+                    itemBuilder: (context, index) {
+                      final step = _registrationSteps[index];
+                      return FadeTransition(
+                        opacity: _fadeAnimation,
+                        child: SlideTransition(
+                          position: _slideAnimation,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(step['title'],
+                                    style: ThemeConstants.titleStyle),
+                                const SizedBox(height: 8),
+                                Text(step['subtitle'],
+                                    style: ThemeConstants.subtitleStyle),
+                                const SizedBox(height: 40),
+                                _buildStepContent(step),
+                                const Spacer(),
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    onPressed: _isLoading ? null : _nextPage,
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          ThemeConstants.primaryColor,
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 16),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            ThemeConstants.borderRadius),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      _currentPage ==
+                                              _registrationSteps.length - 1
+                                          ? (_isLoading
+                                              ? 'Registering...'
+                                              : 'Register')
+                                          : 'Next',
+                                      style: ThemeConstants.buttonStyle,
                                     ),
                                   ),
-                                  child: Text(
-                                    _currentPage ==
-                                            _registrationSteps.length - 1
-                                        ? (_isLoading
-                                            ? 'Registering...'
-                                            : 'Register')
-                                        : 'Next',
-                                    style: ThemeConstants.buttonStyle,
-                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 24),
-                            ],
+                                const SizedBox(height: 24),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

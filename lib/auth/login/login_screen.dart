@@ -119,116 +119,120 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.backgroundColor,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            constraints: const BoxConstraints(maxWidth: 412),
-            margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 32),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: ThemeConstants.backgroundGradient,
+        ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 412),
+              margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 32),
 
-                  // Header
-                  Text('Login', style: ThemeConstants.titleStyle),
-                  const SizedBox(height: 16),
-                  RichText(
-                    text: TextSpan(
-                      style: AppTheme.subtitleStyle,
-                      children: const [
-                        TextSpan(text: 'Login now to get access to\n'),
-                        TextSpan(text: 'StoreEdge'),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-
-                  // Email Input
-                  CustomInputFieldLogin(
-                    label: 'Email',
-                    hint: 'Ex: abc@example.com',
-                    icon: Icons.mail_sharp,
-                    controller: _emailController,
-                    validator: _validateEmail,
-                  ),
-                  const SizedBox(height: 24),
-
-                  // Password Input
-                  CustomInputFieldLogin(
-                    label: 'Your Password',
-                    hint: '••••••••',
-                    obscureText: true,
-                    isPassword: true,
-                    icon: Icons.lock,
-                    controller: _passwordController,
-                    validator: _validatePassword,
-                  ),
-                  const SizedBox(height: 8),
-
-                  const SizedBox(height: 24),
-
-                  // Login Button
-                  CustomButtonLogin(
-                    text: _isLoading ? 'Logging in...' : 'Login',
-                    onPressed: _isLoading
-                        ? null
-                        : () async {
-                            await _handleLogin();
-                          },
-                  ),
-
-                  const SizedBox(height: 24),
-
-                  // Divider
-                  const Divider(color: Colors.black, height: 1),
-                  const SizedBox(height: 24),
-
-                  // OTP Button
-                  CustomButtonLogin(
-                    text: 'Login with OTP',
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginOtpScreen(),
-                        ),
-                      );
-                    },
-                    outlined: true,
-                  ),
-                  const SizedBox(height: 24),
-
-                  // Register Prompt
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Don't have an account?",
+                    // Header
+                    Text('Login', style: ThemeConstants.titleStyle),
+                    const SizedBox(height: 16),
+                    RichText(
+                      text: TextSpan(
                         style: AppTheme.subtitleStyle,
+                        children: const [
+                          TextSpan(text: 'Login now to get access to\n'),
+                          TextSpan(text: 'StoreEdge'),
+                        ],
                       ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const RegisterScreen(),
+                    ),
+                    const SizedBox(height: 40),
+
+                    // Email Input
+                    CustomInputFieldLogin(
+                      label: 'Email',
+                      hint: 'Ex: abc@example.com',
+                      icon: Icons.mail_sharp,
+                      controller: _emailController,
+                      validator: _validateEmail,
+                    ),
+                    const SizedBox(height: 24),
+
+                    // Password Input
+                    CustomInputFieldLogin(
+                      label: 'Your Password',
+                      hint: '••••••••',
+                      obscureText: true,
+                      isPassword: true,
+                      icon: Icons.lock,
+                      controller: _passwordController,
+                      validator: _validatePassword,
+                    ),
+                    const SizedBox(height: 8),
+
+                    const SizedBox(height: 24),
+
+                    // Login Button
+                    CustomButtonLogin(
+                      text: _isLoading ? 'Logging in...' : 'Login',
+                      onPressed: _isLoading
+                          ? null
+                          : () async {
+                              await _handleLogin();
+                            },
+                    ),
+
+                    const SizedBox(height: 24),
+
+                    // Divider
+                    const Divider(color: Colors.black, height: 1),
+                    const SizedBox(height: 24),
+
+                    // OTP Button
+                    CustomButtonLogin(
+                      text: 'Login with OTP',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginOtpScreen(),
+                          ),
+                        );
+                      },
+                      outlined: true,
+                    ),
+                    const SizedBox(height: 24),
+
+                    // Register Prompt
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Don't have an account?",
+                          style: AppTheme.subtitleStyle,
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const RegisterScreen(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'Register',
+                            style: AppTheme.subtitleStyleRegister.copyWith(
+                              fontWeight: FontWeight.w600,
+                              decoration: TextDecoration.underline,
                             ),
-                          );
-                        },
-                        child: Text(
-                          'Register',
-                          style: AppTheme.subtitleStyleRegister.copyWith(
-                            fontWeight: FontWeight.w600,
-                            decoration: TextDecoration.underline,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

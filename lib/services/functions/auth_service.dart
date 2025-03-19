@@ -23,7 +23,6 @@ class AuthService {
 
       switch (response.statusCode) {
         case 200:
-          // Create LoginResponse from the nested structure
           final loginResponse = LoginResponse(
             statusCode: responseData['statusCode'],
             success: responseData['success'],
@@ -75,5 +74,6 @@ class AuthService {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove(_tokenKey);
     await prefs.remove(_userKey);
+    await prefs.clear();
   }
 }

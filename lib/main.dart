@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(user.toString());
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'StoreEdge',
