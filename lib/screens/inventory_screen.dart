@@ -154,6 +154,7 @@ import 'package:storeedge/widgets/global/noti_and_account_icon.dart';
 import 'package:storeedge/widgets/others/used-in-inventory/product_card.dart';
 import 'package:storeedge/widgets/others/used-in-inventory/search_bar.dart';
 import 'package:storeedge/widgets/others/used-in-inventory/stat_card.dart';
+import 'package:storeedge/utils/constants.dart';
 
 class InventoryScreen extends StatefulWidget {
   const InventoryScreen({Key? key}) : super(key: key);
@@ -240,69 +241,74 @@ class _InventoryScreenState extends State<InventoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFEEEEEE),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-              child: NotiAndAccountIconHeader(),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: StatCard(
-                          iconAssetPath: 'assets/icons/total_product.png',
-                          title: 'Total Products',
-                          value: _totalProducts.toString(),
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: StatCard(
-                          iconAssetPath: 'assets/icons/low_stock.png',
-                          title: 'Low Stock',
-                          value: _lowStockCount.toString(),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  SearchWithFilter(
-                    onSearch: _handleSearch,
-                    onFilterSelected: _handleFilter,
-                    selectedFilter: _selectedFilter,
-                  ),
-                  const SizedBox(height: 15),
-                ],
+      backgroundColor: Colors.transparent,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: ThemeConstants.backgroundGradient,
+        ),
+        child: SafeArea(
+          child: Column(
+            children: [
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                child: NotiAndAccountIconHeader(),
               ),
-            ),
-            Expanded(
-              child: Padding(
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: _isLoading
-                    ? const Center(child: CircularProgressIndicator())
-                    : _displayedProducts.isEmpty
-                        ? const Center(child: Text('No products found'))
-                        : ListView.separated(
-                            itemCount: _displayedProducts.length,
-                            separatorBuilder: (context, index) =>
-                                const SizedBox(height: 12),
-                            itemBuilder: (context, index) {
-                              return ProductCard(
-                                product: _displayedProducts[index],
-                                onProductUpdated: _loadProducts,
-                              );
-                            },
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: StatCard(
+                            iconAssetPath: 'assets/icons/total_product.png',
+                            title: 'Total Products',
+                            value: _totalProducts.toString(),
                           ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: StatCard(
+                            iconAssetPath: 'assets/icons/low_stock.png',
+                            title: 'Low Stock',
+                            value: _lowStockCount.toString(),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    SearchWithFilter(
+                      onSearch: _handleSearch,
+                      onFilterSelected: _handleFilter,
+                      selectedFilter: _selectedFilter,
+                    ),
+                    const SizedBox(height: 15),
+                  ],
+                ),
               ),
-            ),
-          ],
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: _isLoading
+                      ? const Center(child: CircularProgressIndicator())
+                      : _displayedProducts.isEmpty
+                          ? const Center(child: Text('No products found'))
+                          : ListView.separated(
+                              itemCount: _displayedProducts.length,
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(height: 12),
+                              itemBuilder: (context, index) {
+                                return ProductCard(
+                                  product: _displayedProducts[index],
+                                  onProductUpdated: _loadProducts,
+                                );
+                              },
+                            ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: CustomFAB(

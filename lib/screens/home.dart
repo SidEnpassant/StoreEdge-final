@@ -18,6 +18,7 @@ class HomeScreen extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: ThemeConstants.backgroundGradient,
       ),
+
       child: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
