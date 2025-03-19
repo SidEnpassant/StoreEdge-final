@@ -1,0 +1,2 @@
+C:/Users/bgame/OneDrive/Desktop/Final-StoreEdge/StoreEdge-final/android/app/.cxx/Debug/601d471i/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/bgame/OneDrive/Desktop/Final-StoreEdge/StoreEdge-final/android/app/.cxx/Debug/601d471i/x86_64/CMakeFiles/rebuild_cache.dir
