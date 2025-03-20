@@ -48,14 +48,14 @@ class NotiAndAccountIconHeader extends StatelessWidget {
         Container(
           width: 45,
           height: 45,
-          // child: IconButton(
-          //   onPressed: () => _navigateToNoti(context),
-          //   icon: Image.asset(
-          //     'assets/icons/notification-icon.png',
-          //     width: 31,
-          //     height: 31,
-          //   ),
-          // ),
+          child: IconButton(
+            onPressed: () => _navigateToNoti(context),
+            icon: Image.asset(
+              'assets/icons/notification-icon.png',
+              width: 31,
+              height: 31,
+            ),
+          ),
         ),
       ],
     );

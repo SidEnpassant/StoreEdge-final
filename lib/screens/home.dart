@@ -13,29 +13,42 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        //backgroundColor: const Color(0xFFEEEEEE),
-        body: Container(
-      decoration: BoxDecoration(
-        gradient: ThemeConstants.backgroundGradient,
-      ),
-
-      child: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                NotiAndAccountIconHeader(),
-                const SizedBox(height: 10),
-                WelcomeHeader(),
-                const SizedBox(height: 20),
-                RevenueCard(),
-                const SizedBox(height: 20),
-                ActionGrid(),
-                const SizedBox(height: 16),
-                Footer(),
-              ],
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: ThemeConstants.backgroundGradient,
+        ),
+        child: SafeArea(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: [
+                    NotiAndAccountIconHeader(),
+                    const SizedBox(height: 10),
+                    WelcomeHeader(),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 20),
+                        RevenueCard(),
+                        const SizedBox(height: 20),
+                        ActionGrid(),
+                        const SizedBox(height: 16),
+                        Footer(),
+                        const SizedBox(height: 20), // Add bottom padding
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -50,6 +63,6 @@ class HomeScreen extends StatelessWidget {
       //   iconSize: 30, // Adjust icon size if needed
       // ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-    ));
+    );
   }
 }

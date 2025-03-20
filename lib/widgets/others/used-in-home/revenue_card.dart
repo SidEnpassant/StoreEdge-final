@@ -233,6 +233,9 @@ class _RevenueCardState extends State<RevenueCard>
                         Icons.trending_up,
                         _rotateAnimation,
                       ),
+                      SizedBox(
+                        width: 1,
+                      ),
                       _buildStatCard(
                         'Expenses',
                         _expense,
