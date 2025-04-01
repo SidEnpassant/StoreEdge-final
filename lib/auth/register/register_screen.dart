@@ -65,7 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen>
     },
     {
       'title': 'Add your signature',
-      'subtitle': 'Upload your signature (optional)',
+      'subtitle': 'Upload your signature',
       'field': 'signature',
     },
   ];
@@ -165,7 +165,7 @@ class _RegisterScreenState extends State<RegisterScreen>
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Add Signature (optional)',
+          'Add Signature',
           style: ThemeConstants.labelStyle,
         ),
         const SizedBox(height: 6),
@@ -275,7 +275,7 @@ class _RegisterScreenState extends State<RegisterScreen>
             const SizedBox(height: ThemeConstants.spacing),
             CustomTextFieldRegister(
               controller: _gstController,
-              label: 'GST number (optional)',
+              label: 'GST number',
               placeholder: '27AAAPA1234A1Z5',
             ),
           ],

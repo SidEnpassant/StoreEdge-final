@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:storeedge/auth/login/login_screen.dart';
-import 'package:storeedge/widgets/others/used-in-home/footer.dart';
 import 'package:storeedge/widgets/others/used-in-profile-screen/profile_item.dart';
 import 'package:storeedge/widgets/others/used-in-profile-screen/user_profile.dart';
 
@@ -49,10 +48,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           'Phone': data['phone'],
           'Business Name': data['business_name'],
           'Business Address': data['business_address'],
-          'GST Number': data['gst'],
-          'Signature': data['signature'], // Image URL
-          'Created At': data['createdAt'],
-          'Updated At': data['updatedAt'],
+          //'GST Number': data['gst'],
+          //'Signature': data['signature'], // Image URL
+          //'Created At': data['createdAt'],
+          //'Updated At': data['updatedAt'],
         };
       });
     } else {
@@ -128,7 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               const SizedBox(height: 23),
-              const Footer(),
+              //const Footer(),
             ],
           ),
         ),

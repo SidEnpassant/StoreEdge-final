@@ -1,0 +1,2 @@
+C:/Users/SIDDHES/Desktop/projects/STOREDGE-MAIN/StoreEdge-final/android/app/.cxx/RelWithDebInfo/2i6h3k59/x86/CMakeFiles/edit_cache.dir
+C:/Users/SIDDHES/Desktop/projects/STOREDGE-MAIN/StoreEdge-final/android/app/.cxx/RelWithDebInfo/2i6h3k59/x86/CMakeFiles/rebuild_cache.dir

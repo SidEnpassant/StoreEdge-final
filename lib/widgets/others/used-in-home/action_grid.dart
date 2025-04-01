@@ -80,31 +80,36 @@ class _ActionGridState extends State<ActionGrid>
                   MaterialPageRoute(builder: (context) => BillsScreen()),
                 ),
               )
-            : index == 1
-                ? ActionItem(
-                    imagePath: 'assets/icons/stock-flow.png',
-                    iconSize: 40,
-                    label: 'Cashflow',
-                    onTap: () {},
-                  )
-                : ActionItemComingSoon(
-                    imagePath: index == 2
+            :
+            // index == 1
+            //     ? ActionItem(
+            //         imagePath: 'assets/icons/stock-flow.png',
+            //         iconSize: 40,
+            //         label: 'Cashflow',
+            //         onTap: () {},
+            //       )
+            ActionItemComingSoon(
+                imagePath: index == 1
+                    ? 'assets/icons/stock-flow.png'
+                    : index == 2
                         ? 'assets/icons/tax.png'
                         : index == 3
                             ? 'assets/icons/details.png'
                             : index == 4
                                 ? 'assets/icons/scan.png'
                                 : 'assets/icons/others.png',
-                    iconSize: 40,
-                    label: index == 2
+                iconSize: 40,
+                label: index == 1
+                    ? 'Cashflow'
+                    : index == 2
                         ? 'Tax'
                         : index == 3
                             ? 'Details'
                             : index == 4
                                 ? 'Scan'
                                 : 'Others',
-                    onTap: () {},
-                  );
+                onTap: () {},
+              );
 
         return ScaleTransition(
           scale: _scaleAnimations[index],

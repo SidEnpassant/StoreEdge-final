@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:storeedge/widgets/others/used-in-home/action_grid.dart';
 import 'package:storeedge/widgets/global/floating_action_button.dart';
-import 'package:storeedge/widgets/others/used-in-home/footer.dart';
 import 'package:storeedge/widgets/global/noti_and_account_icon.dart';
 import 'package:storeedge/widgets/others/used-in-home/revenue_card.dart';
 import 'package:storeedge/widgets/others/used-in-home/welcome_header.dart';
@@ -41,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(height: 20),
                         ActionGrid(),
                         const SizedBox(height: 16),
-                        Footer(),
+                        // Footer(),
                         const SizedBox(height: 20), // Add bottom padding
                       ],
                     ),

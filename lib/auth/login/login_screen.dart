@@ -103,7 +103,9 @@ class _LoginScreenState extends State<LoginScreen> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Text("Login failed: $e"), backgroundColor: Colors.red),
+            content: Text(
+                "Login failed: either user doesn't exists or incorrect password"),
+            backgroundColor: Colors.red),
       );
     } finally {
       if (mounted) {
